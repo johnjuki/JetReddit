@@ -54,18 +54,19 @@ import com.example.myapplication.screens.HomeScreen
 import com.example.myapplication.screens.MyProfileScreen
 import com.example.myapplication.screens.SubredditsScreen
 import com.example.myapplication.theme.JetRedditTheme
+import com.example.myapplication.viewmodel.MainViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
 @Composable
-fun JetRedditApp() {
+fun JetRedditApp(viewModel: MainViewModel) {
   JetRedditTheme {
-    AppContent()
+    AppContent(viewModel)
   }
 }
 
 @Composable
-private fun AppContent() {
+private fun AppContent(viewModel: MainViewModel) {
   val scaffoldState: ScaffoldState = rememberScaffoldState()
   val coroutineScope: CoroutineScope = rememberCoroutineScope()
 
@@ -84,10 +85,10 @@ private fun AppContent() {
       },
       content = { paddingValues ->
         paddingValues
-
         MainScreenContainer(
           modifier = Modifier.padding(bottom = 56.dp),
-          screenState = screenState
+          screenState = screenState,
+          viewModel = viewModel
         )
       }
     )
@@ -137,16 +138,20 @@ fun TopAppBar(scaffoldState: ScaffoldState, coroutineScope: CoroutineScope) {
 }
 
 @Composable
-private fun MainScreenContainer(modifier: Modifier = Modifier, screenState: MutableState<Screen>) {
+private fun MainScreenContainer(
+  modifier: Modifier = Modifier,
+  screenState: MutableState<Screen>,
+  viewModel: MainViewModel
+) {
   Surface(
     modifier = modifier,
     color = MaterialTheme.colors.background
   ) {
     when (screenState.value) {
-      Screen.Home -> HomeScreen()
+      Screen.Home -> HomeScreen(viewModel)
       Screen.Subscriptions -> SubredditsScreen()
       Screen.NewPost -> AddScreen()
-      Screen.MyProfile -> MyProfileScreen()
+      Screen.MyProfile -> MyProfileScreen(viewModel)
     }
   }
 }

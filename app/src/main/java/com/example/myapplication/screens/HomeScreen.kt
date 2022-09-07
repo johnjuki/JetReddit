@@ -34,8 +34,9 @@
 package com.example.myapplication.screens
 
 import androidx.compose.runtime.Composable
+import com.example.myapplication.viewmodel.MainViewModel
 
 @Composable
-fun HomeScreen() {
+fun HomeScreen(viewModel: MainViewModel) {
 
 }
