@@ -38,9 +38,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.AccountCircle
-import androidx.compose.material.icons.filled.ShoppingCart
-import androidx.compose.material.icons.filled.Star
+import androidx.compose.material.icons.filled.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -211,7 +209,18 @@ private fun ProfileInfoItem(
  */
 @Composable
 private fun AppDrawerBody(closeDrawerAction: () -> Unit) {
-    //TODO add your code here
+    Column {
+        ScreenNavigationButton(
+            icon = Icons.Filled.AccountBox,
+            label = stringResource(id = R.string.my_profile),
+            onClickAction = { closeDrawerAction() }
+        )
+        ScreenNavigationButton(
+            icon = Icons.Filled.Home,
+            label = stringResource(id = R.string.saved),
+            onClickAction = { closeDrawerAction() }
+        )
+    }
 }
 
 /**
