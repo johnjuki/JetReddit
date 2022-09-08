@@ -31,21 +31,24 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.example.myapplication.domain.model
+package com.example.myapplication.routing
 
-enum class PostType(val type: Int) {
+import androidx.activity.ComponentActivity
+import androidx.activity.OnBackPressedCallback
+import androidx.activity.OnBackPressedDispatcher
+import androidx.compose.runtime.*
 
-  TEXT(0),
-  IMAGE(1);
+private val localBackPressedDispatcher = staticCompositionLocalOf<OnBackPressedDispatcher?> { null }
 
-  companion object {
+@Composable
+fun BackButtonHandler(
+    enabled: Boolean = true,
+    onBackPressed: () -> Unit
+) {
+  //TODO Add your code here
+}
 
-    fun fromType(type: Int): PostType {
-      return if (type == TEXT.type) {
-        TEXT
-      } else {
-        IMAGE
-      }
-    }
-  }
+@Composable
+fun BackButtonAction(onBackPressed: () -> Unit) {
+  //TODO Add your code here
 }

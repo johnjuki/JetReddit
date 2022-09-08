@@ -38,29 +38,29 @@ import androidx.room.Room
 import com.example.myapplication.data.database.AppDatabase
 import com.example.myapplication.data.database.dbmapper.DbMapper
 import com.example.myapplication.data.database.dbmapper.DbMapperImpl
-import com.example.myapplication.data.database.repository.Repository
-import com.example.myapplication.data.database.repository.RepositoryImpl
+import com.example.myapplication.data.repository.Repository
+import com.example.myapplication.data.repository.RepositoryImpl
 
 /**
  * Provides dependencies across the app.
  */
 class DependencyInjector(applicationContext: Context) {
 
-    val repository: Repository by lazy { provideRepository(database) }
+  val repository: Repository by lazy { provideRepository(database) }
 
-    private val database: AppDatabase by lazy { provideDatabase(applicationContext) }
-    private val dbMapper: DbMapper = DbMapperImpl()
+  private val database: AppDatabase by lazy { provideDatabase(applicationContext) }
+  private val dbMapper: DbMapper = DbMapperImpl()
 
-    private fun provideDatabase(applicationContext: Context): AppDatabase =
-        Room.databaseBuilder(
-            applicationContext,
-            AppDatabase::class.java,
-            AppDatabase.DATABASE_NAME
-        ).build()
+  private fun provideDatabase(applicationContext: Context): AppDatabase =
+    Room.databaseBuilder(
+      applicationContext,
+      AppDatabase::class.java,
+      AppDatabase.DATABASE_NAME
+    ).build()
 
-    private fun provideRepository(database: AppDatabase): Repository {
-        val postDao = database.postDao()
+  private fun provideRepository(database: AppDatabase): Repository {
+    val postDao = database.postDao()
 
-        return RepositoryImpl(postDao, dbMapper)
-    }
+    return RepositoryImpl(postDao, dbMapper)
+  }
 }
