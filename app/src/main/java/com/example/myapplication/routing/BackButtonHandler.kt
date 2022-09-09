@@ -34,9 +34,11 @@
 package com.example.myapplication.routing
 
 import androidx.activity.ComponentActivity
-import androidx.activity.OnBackPressedCallback
 import androidx.activity.OnBackPressedDispatcher
-import androidx.compose.runtime.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.staticCompositionLocalOf
+import androidx.compose.ui.platform.LocalLifecycleOwner
 
 private val localBackPressedDispatcher = staticCompositionLocalOf<OnBackPressedDispatcher?> { null }
 
@@ -45,10 +47,18 @@ fun BackButtonHandler(
     enabled: Boolean = true,
     onBackPressed: () -> Unit
 ) {
-  //TODO Add your code here
+    //TODO Add your code here
 }
 
 @Composable
 fun BackButtonAction(onBackPressed: () -> Unit) {
-  //TODO Add your code here
+    CompositionLocalProvider(
+        localBackPressedDispatcher provides(
+            LocalLifecycleOwner.current as ComponentActivity
+        ).onBackPressedDispatcher
+    ) {
+        BackButtonHandler {
+            onBackPressed.invoke()
+        }
+    }
 }
