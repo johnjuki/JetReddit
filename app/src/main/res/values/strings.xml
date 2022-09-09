@@ -65,4 +65,11 @@
   <string name="subreddit_icon">Subreddit Icon</string>
   <string name="community_icon">Community Icon</string>
   <string name="raywenderlich_com">r/raywenderlich.com</string>
+    <string name="join_button_transition">JoinButtonTransition</string>
+    <string name="animated_button_background_color">Button Background Color</string>
+    <string name="animated_button_width">Button Width</string>
+    <string name="animated_text_max_width">Text Max Width</string>
+    <string name="animated_icon_tint_color">Icon Tint Color</string>
+    <string name="join">Join</string>
+  <string name="plus_icon">Plus Icon</string>
 </resources>
