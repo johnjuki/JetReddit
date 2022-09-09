@@ -148,7 +148,7 @@ private fun AddPostButton(isEnabled: Boolean, onSaveClicked: () -> Unit) {
 private fun CommunityPicker(selectedCommunity: String) {
 
   val selectedText =
-    if (selectedCommunity.isEmpty()) stringResource(R.string.choose_community) else selectedCommunity
+    selectedCommunity.ifEmpty { stringResource(R.string.choose_community) }
 
   Row(
     modifier = Modifier
