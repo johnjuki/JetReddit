@@ -50,47 +50,46 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.myapplication.R
 
-@ExperimentalAnimationApi
 @Composable
 fun JoinedToast(visible: Boolean) {
-  AnimatedVisibility(
-    visible = visible,
-    enter = slideInVertically(initialOffsetY = { +40 }) +
-      fadeIn(),
-    exit = slideOutVertically() + fadeOut()
-  ){
-    ToastContent()
-  }
+    AnimatedVisibility(
+        visible = visible,
+        enter = slideInVertically(initialOffsetY = { +40 }) +
+                fadeIn(),
+        exit = slideOutVertically() + fadeOut()
+    ) {
+        ToastContent()
+    }
 }
 
 @Composable
 private fun ToastContent() {
-  val shape = RoundedCornerShape(4.dp)
-  Box(
-    modifier = Modifier
-      .clip(shape)
-      .background(Color.White)
-      .border(1.dp, Color.Black, shape)
-      .height(40.dp)
-      .padding(horizontal = 8.dp),
-    contentAlignment = Alignment.Center
-  ) {
-    Row(verticalAlignment = Alignment.CenterVertically) {
-      Icon(
-        painter = painterResource(
-          id = R.drawable.ic_planet
-        ),
-        contentDescription = "Subreddit Icon"
-      )
-      Spacer(modifier = Modifier.width(8.dp))
-      Text(text = "You have joined this community!")
+    val shape = RoundedCornerShape(4.dp)
+    Box(
+        modifier = Modifier
+            .clip(shape)
+            .background(Color.White)
+            .border(1.dp, Color.Black, shape)
+            .height(40.dp)
+            .padding(horizontal = 8.dp),
+        contentAlignment = Alignment.Center
+    ) {
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            Icon(
+                painter = painterResource(
+                    id = R.drawable.ic_planet
+                ),
+                contentDescription = "Subreddit Icon"
+            )
+            Spacer(modifier = Modifier.width(8.dp))
+            Text(text = "You have joined this community!")
+        }
     }
-  }
 }
 
-@ExperimentalAnimationApi
+
 @Preview
 @Composable
 fun JoinedToastPreview() {
-  JoinedToast(visible = true)
+    JoinedToast(visible = true)
 }

@@ -78,8 +78,7 @@ fun ImagePost(
   Post(post, onJoinButtonClick) {
     ImageContent(
 //      post.image!!
-    R.drawable.compose_course
-    )
+    R.drawable.thailand)
   }
 }
 

@@ -36,7 +36,6 @@ package com.example.myapplication
 
 import android.content.Intent
 import androidx.compose.animation.Crossfade
-import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
@@ -59,7 +58,7 @@ import com.example.myapplication.viewmodel.MainViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
-@ExperimentalAnimationApi
+
 @Composable
 fun JetRedditApp(viewModel: MainViewModel) {
   JetRedditTheme {
@@ -67,7 +66,6 @@ fun JetRedditApp(viewModel: MainViewModel) {
   }
 }
 
-@ExperimentalAnimationApi
 @Composable
 private fun AppContent(viewModel: MainViewModel) {
   val scaffoldState: ScaffoldState = rememberScaffoldState()
@@ -154,7 +152,7 @@ fun TopAppBar(scaffoldState: ScaffoldState, coroutineScope: CoroutineScope) {
   )
 }
 
-@ExperimentalAnimationApi
+
 @Composable
 private fun MainScreenContainer(
   modifier: Modifier = Modifier,

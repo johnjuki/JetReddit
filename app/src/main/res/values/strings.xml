@@ -77,4 +77,6 @@
   <string name="get_started">Get started by tapping the new chat button here or on the someone\'s profile.</string>
   <string name="start_chatting">Start chatting</string>
   <string name="your_chats">Your chats will show up here.</string>
+    <string name="start_icon">Star Icon</string>
+    <string name="trending_today">Trending Today</string>
 </resources>
