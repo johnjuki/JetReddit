@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021 Razeware LLC
+ * Copyright (c) 2020 Razeware LLC
  * 
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -31,66 +31,42 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package com.example.myapplication.components
+package com.example.myapplication.views
 
-import androidx.compose.animation.*
-import androidx.compose.foundation.background
-import androidx.compose.foundation.border
-import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Icon
-import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
+import android.content.Context
+import android.util.AttributeSet
+import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
+import androidx.cardview.widget.CardView
 import com.example.myapplication.R
 
-@ExperimentalAnimationApi
-@Composable
-fun JoinedToast(visible: Boolean) {
-  AnimatedVisibility(
-    visible = visible,
-    enter = slideInVertically(initialOffsetY = { +40 }) +
-      fadeIn(),
-    exit = slideOutVertically() + fadeOut()
-  ){
-    ToastContent()
-  }
-}
+class TrendingTopicView constructor(
+  context: Context,
+  attrs: AttributeSet? = null,
+  defStyleAttr: Int = 0
+) : CardView(context, attrs, defStyleAttr) {
 
-@Composable
-private fun ToastContent() {
-  val shape = RoundedCornerShape(4.dp)
-  Box(
-    modifier = Modifier
-      .clip(shape)
-      .background(Color.White)
-      .border(1.dp, Color.Black, shape)
-      .height(40.dp)
-      .padding(horizontal = 8.dp),
-    contentAlignment = Alignment.Center
-  ) {
-    Row(verticalAlignment = Alignment.CenterVertically) {
-      Icon(
-        painter = painterResource(
-          id = R.drawable.ic_planet
-        ),
-        contentDescription = "Subreddit Icon"
-      )
-      Spacer(modifier = Modifier.width(8.dp))
-      Text(text = "You have joined this community!")
+  var text: String = ""
+    set(value) {
+      field = value
+      findViewById<TextView>(R.id.text).text = value
     }
-  }
-}
 
-@ExperimentalAnimationApi
-@Preview
-@Composable
-fun JoinedToastPreview() {
-  JoinedToast(visible = true)
+  var image: Int = 0
+    set(value) {
+      field = value
+      findViewById<ImageView>(R.id.image).setImageResource(value)
+    }
+
+  init {
+    inflate(context, R.layout.view_trending_topic, this)
+    radius = resources.getDimension(R.dimen.trending_view_corner_radius)
+
+    val width = resources.getDimensionPixelSize(R.dimen.trending_view_width)
+    val height = resources.getDimensionPixelSize(R.dimen.trending_view_height)
+    val layoutParams = ViewGroup.LayoutParams(width, height)
+
+    setLayoutParams(layoutParams)
+  }
 }

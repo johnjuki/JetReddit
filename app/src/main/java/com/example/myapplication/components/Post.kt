@@ -61,22 +61,34 @@ import com.example.myapplication.domain.model.PostModel
 import com.example.myapplication.domain.model.PostModel.Companion.DEFAULT_POST
 
 @Composable
-fun TextPost(post: PostModel, onJoinButtonClick: (Boolean) -> Unit = {}) {
+fun TextPost(
+  post: PostModel,
+  onJoinButtonClick: (Boolean) -> Unit = {}
+) {
   Post(post, onJoinButtonClick) {
     TextContent(post.text)
   }
 }
 
 @Composable
-fun ImagePost(post: PostModel, onJoinButtonClick: (Boolean) -> Unit = {}) {
-  Post( post, onJoinButtonClick) {
-//    ImageContent(post.image ?: R.drawable.compose_course)
-    ImageContent(R.drawable.compose_course)
+fun ImagePost(
+  post: PostModel,
+  onJoinButtonClick: (Boolean) -> Unit = {}
+) {
+  Post(post, onJoinButtonClick) {
+    ImageContent(
+//      post.image!!
+    R.drawable.compose_course
+    )
   }
 }
 
 @Composable
-fun Post(post: PostModel, onJoinButtonClick: (Boolean) -> Unit = {}, content: @Composable () -> Unit = {}) {
+fun Post(
+  post: PostModel,
+  onJoinButtonClick: (Boolean) -> Unit = {},
+  content: @Composable () -> Unit = {}
+) {
   Card(shape = MaterialTheme.shapes.large) {
     Column(
       modifier = Modifier.padding(
@@ -94,8 +106,14 @@ fun Post(post: PostModel, onJoinButtonClick: (Boolean) -> Unit = {}, content: @C
 }
 
 @Composable
-fun Header(post: PostModel, onJoinButtonClick: (Boolean) -> Unit = {}) {
-  Row(modifier = Modifier.padding(start = 16.dp), verticalAlignment = Alignment.CenterVertically) {
+fun Header(
+  post: PostModel,
+  onJoinButtonClick: (Boolean) -> Unit = {}
+) {
+  Row(
+    modifier = Modifier.padding(start = 16.dp),
+    verticalAlignment = Alignment.CenterVertically
+  ) {
     Image(
       ImageBitmap.imageResource(id = R.drawable.subreddit_placeholder),
       contentDescription = stringResource(id = R.string.subreddits),
@@ -106,12 +124,19 @@ fun Header(post: PostModel, onJoinButtonClick: (Boolean) -> Unit = {}) {
     Spacer(modifier = Modifier.width(8.dp))
     Column(modifier = Modifier.weight(1f)) {
       Text(
-        text = stringResource(R.string.subreddit_header, post.subreddit),
+        text = stringResource(
+          R.string.subreddit_header,
+          post.subreddit
+        ),
         fontWeight = FontWeight.Medium,
         color = MaterialTheme.colors.primaryVariant
       )
       Text(
-        text = stringResource(R.string.post_header, post.username, post.postedTime),
+        text = stringResource(
+          R.string.post_header,
+          post.username,
+          post.postedTime
+        ),
         color = Color.Gray
       )
     }

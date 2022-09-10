@@ -37,6 +37,7 @@ import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.compose.animation.ExperimentalAnimationApi
 import com.example.myapplication.viewmodel.MainViewModel
 import com.example.myapplication.viewmodel.MainViewModelFactory
 
@@ -49,6 +50,7 @@ class MainActivity : AppCompatActivity() {
     )
   })
 
+  @ExperimentalAnimationApi
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
 
