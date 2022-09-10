@@ -72,4 +72,5 @@
     <string name="animated_icon_tint_color">Icon Tint Color</string>
     <string name="join">Join</string>
   <string name="plus_icon">Plus Icon</string>
+    <string name="joined_community">You have joined this community!</string>
 </resources>
